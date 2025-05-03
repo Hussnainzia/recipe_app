@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'package:loginapplication/screens/recipe_input_screen.dart'; // Import the RecipeInputScreen
 
 class MainScreen extends StatelessWidget {
   @override
@@ -7,7 +7,6 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Main Screen'),
-        // Removed the actions list to eliminate the drawer button
       ),
       drawer: Drawer(
         child: ListView(
@@ -29,10 +28,11 @@ class MainScreen extends StatelessWidget {
               leading: Icon(Icons.person),
               title: Text('Profile'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()),
-                );
+                // You can add navigation to the Profile screen here if needed
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => ProfileScreen()),
+                // );
               },
             ),
             // Add more items here if needed
@@ -40,7 +40,23 @@ class MainScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('Welcome to the Main Screen!'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Welcome to the Main Screen!'),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to RecipeInputScreen when button is pressed
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecipeInputScreen()),
+                );
+              },
+              child: Text('Go to Recipe Generator'),
+            ),
+          ],
+        ),
       ),
     );
   }
